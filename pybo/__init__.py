@@ -8,7 +8,9 @@ def create_app():
     app = Flask(__name__) #플라스크 애플리케이션 생성하는 코드
     #__name__에 모듈명 담감. __name__ ->pybo 담기는 것!
 
-    @app.route("/") #URL과 플라스크 코드를 매핑하는 플라스크 데코레이터
-    def hello_pybo():
-        return 'Hello, pybo!'
+    from .views import main_views
+    app.register_blueprint(main_views.bp)
+
     return app
+
+'''main>views.py파일에 생성했던 bp객체를 app.register_blueprint(main_views.bp)로 등록함'''
